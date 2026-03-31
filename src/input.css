@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+/* .bg-opacity {
+  position: relative;
+}
+
+.bg-opacity::before {
+  content: "";
+  position: absolute;
+  inset:0;
+  background-image: url("https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/netflixteaser.png");
+  opacity: 0.6;
+  background-color: rgba(0, 0, 0, 0.6); 
+  z-index: -1;
+} */

@@ -7,15 +7,8 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-blue-500: oklch(62.3% 0.214 259.815);
-    --color-blue-700: oklch(48.8% 0.243 264.376);
-    --color-slate-500: oklch(55.4% 0.046 257.417);
-    --color-slate-800: oklch(27.9% 0.041 260.031);
-    --color-white: #fff;
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
-    --text-4xl: 2.25rem;
-    --text-4xl--line-height: calc(2.5 / 2.25);
+    --color-black: #000;
+    --spacing: 0.25rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -169,65 +162,124 @@
   }
 }
 @layer utilities {
-  .table {
-    display: table;
+  .absolute {
+    position: absolute;
   }
-  .border-collapse {
-    border-collapse: collapse;
+  .relative {
+    position: relative;
   }
-  .resize {
-    resize: both;
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
+  .h-10 {
+    height: calc(var(--spacing) * 10);
   }
-  .bg-slate-500 {
-    background-color: var(--color-slate-500);
+  .h-11\/12 {
+    height: calc(11 / 12 * 100%);
   }
-  .bg-slate-800 {
-    background-color: var(--color-slate-800);
+  .h-full {
+    height: 100%;
   }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  .h-screen {
+    height: 100vh;
   }
-  .text-4xl {
-    font-size: var(--text-4xl);
-    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  .max-h-16 {
+    max-height: calc(var(--spacing) * 16);
   }
-  .text-blue-500 {
-    color: var(--color-blue-500);
+  .w-36 {
+    width: calc(var(--spacing) * 36);
   }
-  .text-blue-700 {
-    color: var(--color-blue-700);
+  .bg-black\/60 {
+    background-color: color-mix(in srgb, #000 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 60%, transparent);
+    }
   }
-  .text-white {
-    color: var(--color-white);
+  .bg-gradient-to-b {
+    --tw-gradient-position: to bottom in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
   }
-  .underline {
-    text-decoration-line: underline;
+  .bg-gradient-to-t {
+    --tw-gradient-position: to top in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
+  .bg-\[url\(\'https\:\/\/www\.notebookcheck\.net\/fileadmin\/Notebooks\/News\/_nc3\/netflixteaser\.png\'\)\] {
+    background-image: url('https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/netflixteaser.png');
+  }
+  .from-black\/80 {
+    --tw-gradient-from: color-mix(in srgb, #000 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-from: color-mix(in oklab, var(--color-black) 80%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .via-transparent {
+    --tw-gradient-via: transparent;
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-transparent {
+    --tw-gradient-to: transparent;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
   }
 }
-@property --tw-border-style {
+@property --tw-gradient-position {
   syntax: "*";
   inherits: false;
-  initial-value: solid;
 }
-@property --tw-outline-style {
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
   syntax: "*";
   inherits: false;
-  initial-value: solid;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
-      --tw-outline-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
     }
   }
 }
